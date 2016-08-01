@@ -1,5 +1,9 @@
 body { padding-top: 70px; }
 
+img {
+  width: 100%;
+}
+
 .product {
   display: block;
   padding: 10px;
