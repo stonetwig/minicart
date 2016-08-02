@@ -1,0 +1,20 @@
+<h2>Thanks for shopping</h2>
+
+{{#each model.items as |item|}}
+  <div class="col-md-3">
+        <span class="item">
+          <span class="item-left">
+              <img src="/productImages/{{item.productImageName}}" alt="{{item.imageAlt}}" />
+              <span class="item-info">
+                  <span>Product nr: {{item.productNumber}}</span>
+                  <span>Product: {{item.productName}}</span>
+                  <span>Price: ${{item.price}}</span>
+                  <span>Quantity: {{item.quantity}}</span>
+              </span>
+          </span>
+      </span>
+  </div>
+{{/each}}
+
+<h2>Amount to pay: ${{model.totalPrice}}</h2>
+<button class="btn btn-primary" {{action "pay" model.totalPrice}}>Pay ${{model.totalPrice}}</button>

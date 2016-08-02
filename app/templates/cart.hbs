@@ -1,0 +1,8 @@
+<h2>Your shopping cart has currently {{model.length}} items</h2>
+<ul class="dropdown-cart full-cart">
+  {{#each model as |item|}}
+    {{cart-item item=item}}
+  {{/each}}
+</ul>
+
+<p>{{#link-to "checkout"}}Proceed to checkout{{/link-to}} or {{#link-to "products"}}continue shopping!{{/link-to}}</p>

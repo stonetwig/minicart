@@ -1,0 +1,17 @@
+<li>
+    <span class="item">
+      <span class="item-left">
+          <img src="/productImages/{{item.productImageName}}" alt="{{item.imageAlt}}" />
+          <span class="item-info">
+              <span>Product nr: {{item.productNumber}}</span>
+              <span>Product: {{item.productName}}</span>
+              <span>Price: ${{item.price}}</span>
+              <span>Quantity: {{input value=item.quantity enter="updateQuantity"}}</span>
+              {{yield}}
+          </span>
+      </span>
+      <span class="item-right">
+          <button class="btn btn-xs btn-danger pull-right" {{action "removeFromCart" item}}>x</button>
+      </span>
+  </span>
+</li>

@@ -1,0 +1,16 @@
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span> {{cart.items.length}} - Items<span class="caret"></span></a>
+    <ul class="dropdown-menu dropdown-cart" role="menu">
+        {{#each cart.items as |item|}}
+          {{cart-item item=item}}
+        {{/each}}
+        <li class="divider"></li>
+          <p><strong>Total price:</strong> ${{cart.totalPrice}}</p>
+          <p><strong>Total number of products:</strong> {{cart.totalQuantity}}</p>
+        <li class="divider"></li>
+        <li>{{#link-to "cart" class="text-center"}}View cart{{/link-to}}</li>
+        <li>{{#link-to "checkout" class="text-center"}}Checkout{{/link-to}}</li>
+    </ul>
+  </li>
+
+{{yield}}
