@@ -1,15 +1,24 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span> {{cart.items.length}} - Items<span class="caret"></span></a>
     <ul class="dropdown-menu dropdown-cart" role="menu">
+      {{#if cart.items.length}}
         {{#each cart.items as |item|}}
           {{cart-item item=item}}
         {{/each}}
         <li class="divider"></li>
-          <p><strong>Total price:</strong> ${{cart.totalPrice}}</p>
-          <p><strong>Total number of products:</strong> {{cart.totalQuantity}}</p>
+          <div class="col-md-12">
+            <p>You have {{cart.totalQuantity}} items in your cart.</p>
+            <h3>Subtotal (USD): ${{cart.totalPrice}}</h3>
+          </div>
         <li class="divider"></li>
         <li>{{#link-to "cart" class="text-center"}}View cart{{/link-to}}</li>
         <li>{{#link-to "checkout" class="text-center"}}Checkout{{/link-to}}</li>
+      {{else}}
+        <div class="col-md-12">
+          <p><strong>You have no items in your cart</strong></p>
+          <p>{{#link-to "products" class="text-center"}}Continue shopping{{/link-to}}</p>
+        </div>
+      {{/if}}
     </ul>
   </li>
 
