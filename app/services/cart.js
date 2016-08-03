@@ -26,7 +26,7 @@ export default Ember.Service.extend({
     }
 
     //TODO: For some reason, can't call reduce on the ember objects directly
-    // Not enough time to investigate right now, fix later
+    // Not enough time to investigate right now, fix later :)
     const totalQuantityForEachItem = items.map(item => {
       // Int parsing needed since quantity can come from post string
       return parseInt(item.get('quantity'));
@@ -35,6 +35,22 @@ export default Ember.Service.extend({
     return totalQuantityForEachItem.reduce((prev, current) => {
       return prev + current;
     });
+  }),
+
+  totalUnavailable: Ember.computed('items.@each.quantity', function() {
+    const items = this.get('items');
+    let totalUnavailable = 0;
+    if (items === null || items.length === 0) {
+      return 0;
+    }
+
+    items.forEach(item => {
+      if (!item.get('productAvailable')) {
+        totalUnavailable += 1;
+      }
+    });
+    console.log("Calculated total:", totalUnavailable);
+    return totalUnavailable;
   }),
 
 
