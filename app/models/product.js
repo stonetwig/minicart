@@ -11,7 +11,5 @@ export default DS.Model.extend({
     return `Image for ${this.get('productName')}}`;
   }),
   quantity: DS.attr('number'),
-  totalPrice: Ember.computed('price', 'quantity', function() {
-    return this.get('price') * parseInt(this.get('quantity'));
-  })
+  totalPrice: DS.attr('number')
 });

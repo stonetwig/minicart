@@ -8,6 +8,7 @@
               <span><strong>{{item.productName}}</strong></span>
               <span>Price: ${{item.price}}</span>
               <span>Quantity: {{input value=item.quantity enter="updateQuantity"}}</span>
+              <span><strong>Total price:</strong> ${{item.totalPrice}}</span>
               {{yield}}
             {{else}}
               <span><strong>{{item.productName}}</strong></span>

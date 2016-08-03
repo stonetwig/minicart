@@ -19,6 +19,13 @@ export default Ember.Service.extend({
     });
   }),
 
+  quantityChanged: Ember.observer('items.@each.quantity', function() {
+    for(let i = 0; i < this.get('items').length; i++) {
+      let it = this.get('items')[i];
+      this.get('items')[i].set('totalPrice', parseInt(it.get('price')) * parseInt(it.get('quantity')));
+    }
+  }),
+
   totalQuantity: Ember.computed('items.@each.quantity', function() {
     const items = this.get('items');
     if (items === null || items.length === 0) {
@@ -49,7 +56,6 @@ export default Ember.Service.extend({
         totalUnavailable += 1;
       }
     });
-    console.log("Calculated total:", totalUnavailable);
     return totalUnavailable;
   }),
 
