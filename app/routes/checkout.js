@@ -9,6 +9,7 @@ export default Ember.Route.extend({
   actions: {
     pay(price) {
       alert("Congratulations! You payed us $" + price + " and we successfully placed your order!");
+      this.get('cart').empty();
     }
   }
 });
